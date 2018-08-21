@@ -1,4 +1,5 @@
 #! /bin/bash
+# Set up container: Frost-Server-GUI and Frost-Server-db
 cd ..
 if test -z "$smartaqnethome"
 then echo "export smartaqnethome=$(uname -n).teco.edu" > /etc/environment
