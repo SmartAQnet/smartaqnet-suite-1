@@ -11,10 +11,12 @@ echo $smartaqnethome
 git clone https://github.com/BowenWang29/docker-SensorThingsServer.git .//Frost-Server
 git clone https://github.com/BowenWang29/docker-postgres-wale.git .//docker-postgres-wale
 docker-compose -f ./Frost-Server/docker-compose.yml up --build -d
-docker-compose -f ./docker-postgres-wale/docker-compose.yml up --build -d
+#docker-compose -f ./docker-postgres-wale/docker-compose.yml up --build -d
 sleep 3m
-docker-compose -f ./docker-postgres-wale/docker-compose.yml exec database psql -U sensorthings -d sensorthings -c 'CREATE EXTENSION IF NOT EXISTS "postgis"' && \
-docker-compose -f ./docker-postgres-wale/docker-compose.yml exec database psql -U sensorthings -d sensorthings -c 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"' && \
+docker-compose -f ./Frost-Server/docker-compose.yml exec database psql -U sensorthings -d sensorthings -c 'CREATE EXTENSION IF NOT EXISTS "postgis"' && \
+#docker-compose -f ./docker-postgres-wale/docker-compose.yml exec database psql -U sensorthings -d sensorthings -c 'CREATE EXTENSION IF NOT EXISTS "postgis"' && \
+docker-compose -f ./Frost-Server/docker-compose.yml exec database psql -U sensorthings -d sensorthings -c 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"' && \
+#docker-compose -f ./docker-postgres-wale/docker-compose.yml exec database psql -U sensorthings -d sensorthings -c 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"' && \
 curl -X POST http://localhost:8080/FROST-Server/DatabaseStatus
 # Set up landoop and sftp
 #sleep 3m
